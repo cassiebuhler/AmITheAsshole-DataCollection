@@ -12,31 +12,37 @@ Disclaimer: I flew too close to the sun and messed up this project. I will event
 ## Contents 
 
 #### Code
-There are 3 python notebook files that contain all the code. They should be ran in consecutive order.
+There are 4 python notebook files that contain all the code. They should be ran in consecutive order.
 
-- Part1a-AcquiringPostID.ipynb - this file uses pushshift to collect the post IDs for the desired range of posts.  It saved the 700,000+ ids as "postIDs.json" in the data folder. 
-- Part2-CreateDataset.ipynb - this file uses PRAW to gather more specific information about the posts using the post id/link. Given the size of the data from 1a, it would've taken my computer 6 days to run this part so I reduced it to 70,000 posts. However, I was stupid and only saved the posts that had a verdict or weren't deleted, so 13 hours later I found out it only ran up to 39,000 posts and out of these it only saved 114 posts. That is why I had to add in data from 2b. This increased my dataset to almost 1000 posts. (note: I saved the data every 1000 iterations in case it terminated early since it was running all night)
-- Part2b-AddingMoreData.ipynb - this file uses query to search for the flair (aka verdict) on the subreddit. I was able to get 200+ posts for each category, totaling in 800 posts. These posts are all within the last couple months, whereas the posts from 1a are between 2015-2018. Note that links/ids are both unique identifiers that I can use for part 2 so it doesn't matter which one I collect. The links are all saved in the folder "data-big" as 4 separate json files. 
-- Part3-CleaningData.ipynb - this file uses the "temporaryData_39000.csv", "YTA.csv" , "NTA.csv" "ESH.csv" and "NAH.csv" files and merges/cleans them. The outputted data is "Data_cleaned.csv" 
+1. **Part1a-AcquiringPostID.ipynb:** this file uses pushshift to collect the post IDs for the desired range of posts.  
+    - It saved the 700,000+ ids as "postIDs.json" in the data folder. 
+2. **Part2-CreateDataset.ipynb:** this file uses PRAW to gather more specific information about the posts using the post id/link. 
+    - Make sure to input your own PRAW keys
+    - Given the size of the data from 1a, it would've taken my computer 6 days to run this part so I reduced it to 70,000 posts. However, I messed up and only saved the posts that had a verdict or weren't deleted, so 13 hours later I found out it only ran up to 39,000 posts and out of these it only saved 114 posts. That is why I had to add in data from 2b. This increased my dataset to almost 1000 posts. 
+    - (I saved the data every 1000 iterations in case it terminated early since it was running all night)
+3. **Part2b-AddingMoreData.ipynb:** this file uses query to search for the flair (aka verdict) on the subreddit. I was able to get 200+ posts for each category, totaling in 800 posts.
+    -  These posts are all within the last couple months, whereas the posts from 1a are between 2015-2018. Note that links/ids are both unique identifiers that I can use for part 2 so it doesn't matter which one I collect. The links are all saved in the folder "data-big" as 4 separate json files. 
+4. **Part3-CleaningData.ipynb:** this file uses the "temporaryData_39000.csv", "YTA.csv" , "NTA.csv" "ESH.csv" and "NAH.csv" files and merges/cleans them. The outputted data is "Data_cleaned.csv" 
 
 
 #### Data
-postIDs.json - all the post IDs for the specified posts. There are over 700,000 ids. 
-
-temporaryData_x.csv - where x is the number of posts processed. There are 39 data files but you should only care about the last one, temporaryData_39000.csv. This is from part 2 containing the post with their features. 
-
-Data_cleaned.csv - the cleaned, finalized data! 
+- **postIDs.json:** all the post IDs for the specified posts. There are over 700,000 ids. 
+- **temporaryData_x.csv:**  where x is the number of posts processed. There are 39 data files but you should only care about the last one, temporaryData_39000.csv. This is from part 2 containing the post with their features. 
+- **Data_cleaned.csv:** the cleaned, finalized data! 
 
 In the big-data folder:
-YTA_big_links.json - links to posts with YTA verdict from 2b
-NTA_big_links.json 
-ESH_big_links.json
-NAH_big_links.json
 
-YTA.csv - the saved dataset from 2b
-NTA.csv - 
-ESH.csv - 
-NAH.csv - 
+contains links to posts with YTA, NTA, ESH, and NAH verdicts from 2b
+- YTA_big_links.json 
+- NTA_big_links.json 
+- ESH_big_links.json
+- NAH_big_links.json
+
+saved datasets with YTA, NTA, ESH, and NAH verdicts from 2b
+- YTA.csv 
+- NTA.csv 
+- ESH.csv  
+- NAH.csv 
 
 
 ---
